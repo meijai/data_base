@@ -1,0 +1,22 @@
+Uma escola precisa armazenar em um banco de dados as informações das inscrições realizadas em seus cursos, neste caso as pessoas devem se inscrever em minicursos ou palestras, considere que uma pessoa pode se inscrever em vários minicursos ou/e varias palestras. elabore um diagrama de entidade relacionamento que seja capaz de propor e descrever uma solução para este problema
+
+Escreva um script SQL que gere as tabelas do seu diagrama.
+
+pode ser em dupla
+Inscrito
+- ID
+- NOME
+- Data nascimento	Inscrição
+- ID
+- ID_Inscrito
+- ID_Minicurso
+- ID_Palestra
+- Data_Inscrição	Minicurso
+- ID
+- Nome_Curso
+- Data_Inicio
+- Data_Fim
+		Palestra
+- ID
+- Nome_Palestra
+- Data_Palestra

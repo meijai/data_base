@@ -1,0 +1,192 @@
+git remote -v (verificar se há repositório cadastrado)
+git remote add origin "link" (vincular repositorio remoto)
+git status (verifica se há arquivos não rastreados)
+git add . (adiciona arquivos nao rastreados ao rastreamento)
+git commit -m "mensagem" (criar commit(checkpoint))
+git push origin main (uploado arquivos)
+
+
+
+inserir 5 registros em cada entidade que foi criada na aula anterior
+
+
+
+COM BASE NO EXEMPLO EXECUTADO EM LABORATORIO DO UNOESC BANK,
+crie um banco de dados e seu script SQL para especificar o controle de agendamento dos atendimentos aos clientes de uma manicure e pedicure.
+defina livremente os campos que especificam os atributos das entidades necessárias para o armazenamento de dados.
+
+
+Cardinalidade:
+{
+ 	1 : 1
+ 	1 : N
+ 	N : 1
+ 	N : N (Anomalia)
+}
+
+
+
+--- tarefa, configurar meu pc, escolher mais um tipo de banco de dados e testar, fazer uma pratica brasica do feito hoje
+
+WWW - World Wide Web (teia em todo o mundo)
+W3C - World Wide Web Consortium
+DBA - DataBase ADM
+SQL - Structured Querry Language
+{
+ 	DML - Data manipulation Language
+ 	DDL - Data Definition Language
+ 	DQL - Data Querry Language
+}
+
+SGBD - Sistema de gerenciamento de banco de dados
+há vários tipos de formas de armazenar dados, vamos ver por hora bancos de dados relacionais
+ERP - Enterprise Resource Plan
+{
+ 	Matriz
+ 	Filial 1
+ 	Filial 2
+}
+
+
+(PK)	Primary key - pode ser simples ou composta
+ 	simples - somente uma coluna
+ 	composta - combinação de colunas
+ 		serve para garantir que não haverão registros repetidos na tabela
+ 		(exemplo, para o governo, nossa chave primaria é o cpf)
+
+
+(FK)	Foreign Key - chave estrangeira - pega dados de uma chave de fora do registro de chave, como referencia de outra chave, referencia de uma chave primaria de outra tabela
+
+Data Warehouse
+{
+ 	Armazém de dados
+ 	Modelo dimensional
+ 	Sistema projetado para análise de comportamento e tendências de negócio
+ 	Partem da implantação para a necessidade do usuário
+ 	Idealizado por Innon/Kimball
+ 	A modelagem dimensiona é uma técnica de projeto lógico que busca apresentar dados em uma estrutura padronizada e intuitiva que permite alto desempenho evitando técnicas de normalização. Especificamente utilizada para suportar processamento analítico OLAP - On-Line Analitic Process.
+ 	O Tipo de negócio pode ser representado por um "Cubo de dados"
+ 	{
+ 		Células de dados - Valor
+ 		Arestas do cubo - dimensões
+ 	}
+ 	É possível representar muitas dimensões, em geral de 4 a 15 modelos com + dimensões podem ser combinadas.
+}
+
+Projeto de BD
+{
+ 	Dados = Parte mais estável. após sua definição costuma sofrer pouca atualização
+ 	Processos = parte mais dinâmica. Os processos realizados sobre os dados variam com a necessidade.
+}
+
+Fases do Projeto
+{
+ 	Analise de requisitos:
+ 	{
+ 		coleta informações sobre os dados
+ 	}
+ 	Projeto Conceitual:
+ 	{
+ 		Procura capturar formalmente os requisitos de informação de BD. Define-se os principais relacionamentos sem se preocupar com restrições.
+ 		Descreve informações contidas em uma realidade.
+ 	}
+ 	Projeto logico:
+ 	{
+ 		Definem as estruturas de dados que implementam os requisitos identificados na modelagem conceitual. Resulta em um esquema logico sob a ótica de uma abordagem (logica, relacional, rede, etc. )
+ 	}
+ 	Projeto físico:
+ 	{
+ 		Define parâmetros físicos de acesso. Tipos de dados, tamanho de campos, índices, locais de gravação, etc.
+ 	}
+}
+
+
+
+
+
+
+
+Modelagem de Dados
+{
+ 	// Banco de dados seria a fundação do projeto
+ 	Crucialmente importante dentro da modelagem, criação e administração do BD. Os cuidados nesta etapa minimizam problemas futuros, tais como redundância de dados e baixa velocidade do sistema.
+ 	Técnicas de modelagem são usadas para registrar os dados nos mais diferentes níveis. O objetivo é dar fidelidade à representação das coisas do mundo. Os dados podem demonstrar elasticidade e assumir varias formas, dependendo do contexto em que estão inseridos.
+ 	Modelagem de dados é a representação gráfica e textual das estruturas, operadores e regras que definem os dados para representar a realidade. O principio básico é o mesmo da teoria dos conjuntos. Onde cada ENTIDADE deve ser vista como um conjunto que pode ou não ter um relacionamento (associação) com outro conjunto.
+ 	Um BK relacional é baseado em uma percepção do mundo real, que consiste em objetos chamados TABLES e em seus relacionamentos. Uma TABLE é o conjunto único de atributos ou características, chamadas de colunas. EX: Conta e saldo descrevem uma conta particular em um banco.
+ 	Um Relacionamento é uma associação entre 2 TABLES. EX: Cliente -> Conta informa as contas de um determinado cliente.
+
+ 	Diagrama de E/R -> Entidade Relacionamento
+ 	{
+ 		Ferramenta de modelagem conceitual, amplamente utilizada. Padrão para modelagem. Fácil compreensão.
+ 		Entidade: São os componentes físicos e abstratos do mundo real que armazenam os dados. EX: cliente, conta, banco, etc...
+ 		Atributo: são as propriedades de uma entidade. Não tem vida própria ou independente. Caracteriza a entidade. EX: nome, saldo, nº da conta, etc...
+ 		Ocorrência: Conjunto de atributos de uma entidade (uma linha dentro da entidade) que a caracteriza. EX: Jose da Silva (nome e sobrenome).
+ 		Identificador ou atributo determinante: Atributo ou coleção de atributos que determina de modo único uma ocorrência da entidade. EX: ID do cliente.
+ 	}
+ 
+
+ 	Classificação de entidades: Forte ou primária: Alto grau de independência. Possuem maior peso do modelo e podem ter ocorrência independente da existência de outras entidades. EX: Banco (Forte) ... < Agencia (Fraca)
+ 
+ 	Fraca ou dependente: Sua existência depende da existência de outra entidade (Forte). A cardinalidade dela para com a forte é sempre (1,1) que indica dependência. EX: Agencia não pode existir sem banco.
+
+ 	Associativa: não existe por si so e esta condicionada a existência de 2 ou mais Entidades das quais e concebida. Seu identificador geralmente é composto. EX: Publicação < - < Publicacao_Autor < - < Autor
+
+ 
+}
+
+
+
+
+Identificação de entidades
+
+Segundo Keller(1990):
+Ao criar uma entidade, deve-se atribuir um nome representativo e de escolher um atributo que identifique cada ocorrência da entidade. Não há entidade se não houver um atributo cujo valor jamais seja repetido.
+Geralmente representa objetos palpáveis.
+Algumas coisas palpáveis não são entidades, mas documentos que reúnem informações sore outras entidades.
+Apenas no caso de entidade fraca, não há por que se preocupar com um "ID", pois as pesquisas futuras serão feitas com base na sua entidade forte.
+Uma relação de generalização / especialização evidencia entidades cujas ocorrências podem ser diferenciadas em alguns atributos, sugerindo a existência da entidade geral e das especializadas.
+
+
+Atributos
+Propriedade da entidade que precisa ser armazenada.
+Pode conter apenas um valor atômico, indivisível. É errado definir como atributo um valor estruturado, como endereço: Rua, bairro, cidade, etc...
+O nome de cada atributo deve ser sempre no singular.
+Se ele representa a ocorrência única da entidade deve ser precedido por #.
+Se seu valor é obrigatório, deve ser informado para cada uma das ocorrências da entidade deve ser precedido por *.
+Banco
+#NR_BANCO
+*NM_BANCO
+ID_BOLETO
+
+
+
+
+Classificação:
+Atomicidade:
+Simples: Não tem outros atributos aninhados. EX: Nome
+Composto: Possui atributos aninhados. EX: Endereço, rua, cidade, etc...
+
+Ocorrências:
+Monovalorado: Único valor para uma instancia. Ex: nome
+Multivalorado: mais de um valor para cada entidade. EX: Dependentes, filhos, telefones, endereços, etc...
+Derivado: Calculado a partir de outro atributo. EX: Idade.
+
+
+
+Participação em chave:
+
+Identificação: Desempenham papel de identificação em relacionamentos, PK's e chaves secundarias (índices).
+Determinante ou chave: Identifica unicamente cada ocorrência de uma entidade. EX: COD_FUNCIONARIO
+Conexão ou relacionamento: Chaves estrangeiras
+Meio: Atributos internos específicos do domínio da aplicação.
+ 	Interno: Salario
+ 	Externo: valor do UFIR
+Origem:
+ 	- Natural: nome
+ 	- Artificial: Codigo_Cliente
+Privacidade:
+ 	- Restrito: senha
+ 	- Publico: Nome
+Derivação:
+ 	- Primitivo: Nome
+ 	- Derivado: Idade

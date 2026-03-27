@@ -1,0 +1,60 @@
+Relacionamentos entre entidades
+
+- São associações entre entidades de dados. Estão intimamente ligadas e representam os caminhos de navegação ou rotas de acesso do modelo de dados.
+
+Grau de cardinalidade:
+- Grau muitos : ------------<
+- Grau um : -------------
+
+Obrigatoriedade:
+- Obrigatório : ___________ (not null(deve))
+- Opcional : ............ (null(pode))
+
+Sintaxe: Cada entidade1 {pode ou deve}
+nome_do_relacionamento : {um ou mais | um e somente um}
+
+entidade2	Ex: produto(estar) .........-----< (possuir){Item | Nota}
+
+O relacionamento deve sempre ser lido em todas as direções:
+Cada produto pode estar em um ou mais Item_Nota
+Cada item nota deve possuir um e somente um produto
+
+O relacionamento é composto pela combinacao das propriedades de cardinalidade e um verbo que represente a ligacao, estes verbos comproem o nome do relacionamento.
+
+Cardinalidade:
+
+1:1 - (um pra um) : Normalmente aplcada para registrar com informações nulas para determinados campos da entidade.
+EX: Um funcionário pode ser um e somente um efetivo, e um efetivo deve ser um e somente um funcionário
+
+[Funcionário]......--------[Efetivo]
+[#CD_FUNC  ]		   [#COD_FUNCIONARIO]
+[FONE      ]		   [DT_CONTRATO     ]
+[VL_SALARIO]		   [NR_DEPENDENTES  ]
+
+
+1:N - (um para muitos): Relacionamento mais comum e utilizado. Representa a hierarquia entre as entidades.
+EX: Um departamento pode gerenciar varios setores, mas um setor deve estar subordinado a somente um departamento.
+
+[DEPARTAMENTO].........----<[SETOR    ]
+[#CD_DPTO    ]		    [#DC_SETOR]
+			    [CD_DEPTO ]
+
+
+M:N - (muitos pra muitos) : Utilizado quando as informações formam ciclo, sem hierarquia.
+EX: Um estudante pode participar de vários projetos e um projeto pode ter vários estudantes.
+
+[PROJETO]>------------------<[ESTUDANTE]
+
+
+
+Auto relacionamento:
+Reflexivo ou recursivo:
+Quando uma entidade se relaciona com ela mesma.
+EX: Uma entidade funcionário pode haver uma informação supervisor que deve ser um funcionário previamente cadastrado.
+
+Estes relacionamentos devem ser obrigatoriamente opcional.
+
+[Funcionário  ]-----
+[#ID	      ]     |
+[NOME	      ]     |
+[ID_SUPERVISOR]-----
