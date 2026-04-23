@@ -26,6 +26,14 @@ CONSTRAINT FK_PERSON_ADDRESS
 	REFERENCES ADDRESS(ID_ADDRESS)
 );
 
+CREATE TABLE PATIENT(
+ID_PATIENT INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ID_PERSON INT NOT NULL,
+CONSTRAINT FK_PATIENT_PERSON
+	FOREIGN KEY(ID_PERSON)
+    REFERENCES PERSON(ID)
+);
+
 CREATE TABLE EMERGENCY_CONTACT(
 ID_EMERGENCY_CONTACT INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 FIRST_NAME VARCHAR(100) NOT NULL,
@@ -57,67 +65,7 @@ CONSTRAINT FK_CONSULTATION_DOCTOR
     REFERENCES DOCTOR(ID_DOCTOR),
 CONSTRAINT FK_CONSULTATION_PATIENT
 	FOREIGN KEY(ID_PATIENT)
-    REFERENCES PERSON(ID)
+    REFERENCES PATIENT(ID_PATIENT)
 );
-
-INSERT INTO ADDRESS (NEIGHBORHOOD, STREET, CEP, HOUSE_NUMBER) VALUES
-('Centro', 'Rua A', '88000000', '101'),
-('Trindade', 'Rua B', '88010000', '102'),
-('Ingleses', 'Rua C', '88020000', '103'),
-('Coqueiros', 'Rua D', '88030000', '104'),
-('Estreito', 'Rua E', '88040000', '105'),
-('Campeche', 'Rua F', '88050000', '106'),
-('Itacorubi', 'Rua G', '88060000', '107'),
-('Saco Grande', 'Rua H', '88070000', '108'),
-('Lagoa', 'Rua I', '88080000', '109'),
-('Jurerê', 'Rua J', '88090000', '110');
-
-INSERT INTO PERSON (FIRST_NAME, LAST_NAME, PHONE, RG, CPF, SEX, CIVIL_STATUS, BIRTH_DATE, ID_ADDRESS) VALUES
-('João', 'Silva', '48999990001', '1000001', '11111111111', 'Masculino', 'Solteiro', '1990-01-01', 1),
-('Maria', 'Souza', '48999990002', '1000002', '22222222222', 'Feminino', 'Casado', '1988-02-02', 2),
-('Carlos', 'Pereira', '48999990003', '1000003', '33333333333', 'Masculino', 'Solteiro', '1995-03-03', 3),
-('Ana', 'Oliveira', '48999990004', '1000004', '44444444444', 'Feminino', 'Casado', '1992-04-04', 4),
-('Pedro', 'Santos', '48999990005', '1000005', '55555555555', 'Masculino', 'Solteiro', '1985-05-05', 5),
-('Juliana', 'Costa', '48999990006', '1000006', '66666666666', 'Feminino', 'Divorciado', '1993-06-06', 6),
-('Lucas', 'Ferreira', '48999990007', '1000007', '77777777777', 'Masculino', 'Solteiro', '2000-07-07', 7),
-('Fernanda', 'Almeida', '48999990008', '1000008', '88888888888', 'Feminino', 'Casado', '1991-08-08', 8),
-('Bruno', 'Rocha', '48999990009', '1000009', '99999999999', 'Masculino', 'Solteiro', '1987-09-09', 9),
-('Patricia', 'Martins', '48999990010', '1000010', '10101010101', 'Feminino', 'Viúvo', '1980-10-10', 10);
-
-INSERT INTO EMERGENCY_CONTACT (FIRST_NAME, LAST_NAME, PHONE, ID_PERSON) VALUES
-('Contato1', 'Silva', '48988880001', 1),
-('Contato2', 'Souza', '48988880002', 2),
-('Contato3', 'Pereira', '48988880003', 3),
-('Contato4', 'Oliveira', '48988880004', 4),
-('Contato5', 'Santos', '48988880005', 5),
-('Contato6', 'Costa', '48988880006', 6),
-('Contato7', 'Ferreira', '48988880007', 7),
-('Contato8', 'Almeida', '48988880008', 8),
-('Contato9', 'Rocha', '48988880009', 9),
-('Contato10', 'Martins', '48988880010', 10);
-
-INSERT INTO DOCTOR (CRM, ID_PERSON) VALUES
-('CRM1001', 1),
-('CRM1002', 2),
-('CRM1003', 3),
-('CRM1004', 4),
-('CRM1005', 5),
-('CRM1006', 6),
-('CRM1007', 7),
-('CRM1008', 8),
-('CRM1009', 9),
-('CRM1010', 10);
-
-INSERT INTO CONSULTATION (CONSULTATION_DATE, DIAGNOSIS, ID_DOCTOR, ID_PATIENT) VALUES
-('2026-04-01 08:00:00', 'Gripe', 1, 2),
-('2026-04-02 09:00:00', 'Febre', 2, 3),
-('2026-04-03 10:00:00', 'Dor de cabeça', 3, 4),
-('2026-04-04 11:00:00', 'Alergia', 4, 5),
-('2026-04-05 12:00:00', 'Resfriado', 5, 6),
-('2026-04-06 13:00:00', 'Infecção', 6, 7),
-('2026-04-07 14:00:00', 'Dor muscular', 7, 8),
-('2026-04-08 15:00:00', 'Ansiedade', 8, 9),
-('2026-04-09 16:00:00', 'Insônia', 9, 10),
-('2026-04-10 17:00:00', 'Consulta rotina', 10, 1);
 
 select * from consultation;
