@@ -1,0 +1,19 @@
+Views / Visoes
+
+É uma tabela logica que não ocupa lugar no BD, pois seus dados não estão fisicamente armazenados sob ela, e pode ser composta por colunas e agrupamentos de uma ou mais tabela. Ou seja, uma visão é resultado de uma consulta (Querry). De maneira geral, em uma visão é permitido selecionar, atualizar, excluir e incluir dados. No entanto, visões que contenham JOIN, GROUP BY, DISTINCT, ALIASES (para colunas) e expressões somente permitem seleções.
+Comando: CREATE VIEW NOME_VIEW [NOME_COLUNA[NOME_COLUNA]] AS SELECT
+
+EX:
+CREATE VIEW NOTA_CLIENTE AS
+SELECT N.NRO_NOTA, C.NM_CLIENTE AS NOME,
+N.DT_EMISSAO AS EMISSAO,
+SUM(I.VL_UNITARIO * I.QT_PRODUTO) AS TOTAL
+FROM CLIENTE AS C, NOTA_FISCAL AS N,
+	ITEM_NOTA_FISCAL AS I
+WHERE C.CD_CLIENTE = N.CD_CLIENTE
+AND N.NR_NOTA = I.NR_NOTA
+GROUP BY N.NR_NOTA, C.NM_CLIENTE, N.DT_EMISSAO
+
+Como a estrutura de uma VIEW não pode ser alterada, para modificar uma visão ela deve ser excluída e recriada.
+Comando:
+DROP VIEW NOME_VIEW

@@ -1,0 +1,14 @@
+Construa um modelo de entidade relacionamento para controle de cinemas. Após várias reuniões com futuros usuários de cinema, relacionou-se uma série de regras de negócio que serão a base para a modelagem de seu banco de dados:
+
+a) A empresa de distribuição possui vários cinemas em diversas localidades.
+b) Cada cinema possui identificação única, nome fantasia, endereço, etc.
+c) Os filmes podem ser dos mais variáveis gêneros e podem ser registrados com o título original, tempo de duração, diretor, etc. Cada filme possui vários atores.
+d) As seções de cinema possuem os mais variados horários.
+e) Os atores de um filme podem obviamente, participar de outros filmes, assim como o diretor de um filme pode ser ator neste filme ou em outro. O ator possui número de identificação, nome, nacionalidade, data de nascimento, etc.
+
+Entrega:
+
+Diagrama de entidade/relacionamento
+Arquivo de criação da estrutura do banco de dados
+Arquivo com SEED preenchendo os dados da tabela
+Arquivo com consultas que exibam os principais dados das junções das tabelas. EX: Qual com mais filmes em cartaz, periodicidade dos filmes, diretor mais procurado.
